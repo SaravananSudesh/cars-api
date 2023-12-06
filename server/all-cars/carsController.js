@@ -26,7 +26,7 @@ const getCarsByBrand = async(req, res) => {
                     function(){
                         let name = $(this).attr('title')
                         let code = $(this).attr('style').slice(11)
-                        colours.push({ name, code })
+                        if(name && code) colours.push({ name, code })
                 })
 
                 let spec_map = []
@@ -126,8 +126,8 @@ async function getSpecifications(url){
             key: $(this).find('.com-car-sec-1').find('p').text(),
             value: $(this).find('.com-car-sec-2').find('p').text(),
         }
-        
-        specs.push({spec})
+        console.log(specs.length)
+        specs.push(spec)
     })
 
     return specs
